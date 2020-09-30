@@ -1,5 +1,5 @@
 class ListController < ApplicationController
-  before_action :set_list, only: [:edit, :update]
+  before_action :set_list, only: [:edit, :update, :destroy]
 
   def new
     @list = List.new
@@ -25,6 +25,11 @@ class ListController < ApplicationController
     end
   end
 
+  def destroy
+    @list.destroy
+    redirect_to root_path
+  end
+
   private
 
   def list_params
@@ -32,7 +37,7 @@ class ListController < ApplicationController
   end
 
   def set_list
-    @list = List.find_by(id: params[:id])
+    @list = List.find(params[:id])
   end
 
 end
