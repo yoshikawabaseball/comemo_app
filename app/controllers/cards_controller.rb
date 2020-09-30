@@ -12,6 +12,10 @@ class CardsController < ApplicationController
     else
       render :new
     end
+
+    def show
+      @card = Card.find(params[:id])
+    end
   end
 
   private
